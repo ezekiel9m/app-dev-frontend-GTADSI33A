@@ -8,46 +8,35 @@ const Login = () => {
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
 
-  const handleLogin = () =>{
-    if(!email || !senha ){
+  const handleLogin = () => {
+    if (!email || !senha) {
       alert("Infrome email e senha.");
       return;
     }
-    try{
-      // criar objeto de dados 
+    try {
+      // criar objeto de dados
       const payload = {
-        email: email,
-        senha: senha
-      }
-      // inserir dados no banco de dado do navegador 
-      localStorage.setItem('usuario', JSON.stringify());
+        email: "exemplo@teste.com",
+        senha: "1234",
+      };
+      // inserir dados no banco de dado do navegador
+      localStorage.setItem("usuarios", JSON.stringify(payload));
 
-      // ler os dados do banco de dados 
-      const localStorageUsuario = localStorage.getItem('usuario');
+      // ler os dados do banco de dados
+      const localStorageUsuario = localStorage.getItem("usuarios");
 
       // converter os dados para JSON
-      const usuario = JSON.stringify(localStorageUsuario)
+      const usuario = JSON.parse(localStorageUsuario);
 
-      // atualizar os ddos 
-      usuario.email = "tech@tech.com.br";
-      usuario.senha = "1234567889";
-
-      // remover objeto do banco de dados 
-      localStorage.removeItem('usuario');
-
-      // inserir novamente 
-      localStorage.setItem('usuario', JSON.stringify(payload));
-
-      if(usuario.email === email && usuario.senha === senha){
-        return;
-      }
-      else{
+      if (usuario.email === email && usuario.senha === senha) {
+        alert("Login realizado com sucesso!");
+      } else {
         setErro("Usuário ou senha inválido");
       }
-    }catch(erro){
-      setErro(`Erro ao fazer login. Tente novamente mais tarde. ${erro}`)
+    } catch (erro) {
+      setErro(`Erro ao fazer login. Tente novamente mais tarde. ${erro}`);
     }
-  }
+  };
 
   return (
     <S.Container>
@@ -69,9 +58,11 @@ const Login = () => {
             setSenha(e.target.value);
           }}
         />
-        {erro && <S.Label>{erro}</S.Label>}
-        <Button onClick={handleLogin} text="Entrar" color="#0d6efd"></Button>
-        <Button text="Cadastrar" color="#666"></Button>
+        {erro && <S.LabelError>{erro}</S.LabelError>}
+        <S.ButtonGroup>
+          <Button onClick={handleLogin} text="Entrar" color="#0d6efd"></Button>
+          <Button text="Cadastrar" color="#666"></Button>
+        </S.ButtonGroup>
       </S.Content>
     </S.Container>
   );
