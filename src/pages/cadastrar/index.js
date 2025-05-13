@@ -20,9 +20,9 @@ const Cadastrar = () => {
   const handleSave = async () => {
     try {
       if (dados) {
-        localStorage.setItem("usuario", JSON.stringify(dados));
+        localStorage.setItem("usuarios", JSON.stringify(dados));
         alert("Cadastro realizado com sucesso!");
-        navigate("/login");
+        navigate("/login/");
       } else {
         return;
       }

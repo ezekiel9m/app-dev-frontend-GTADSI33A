@@ -8,8 +8,8 @@ const RoutersApp = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cadastrar" element={<Cadastrar />} />
+        <Route path="/login/" element={<Login />} />
+        <Route path="/cadastrar/" element={<Cadastrar />} />
       </Routes>
     </BrowserRouter>
   );
