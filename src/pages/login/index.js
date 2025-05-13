@@ -22,8 +22,8 @@ const Login = () => {
       // converter os dados para JSON
       const usuario = JSON.parse(localStorageUsuario);
 
-      if (usuario.email === email && usuario.senha === senha) {
-        return;
+      if (email === "exemplo@gmail.com" && senha === "1234") {
+        navigate('/home/');
       } else {
         setErro("Usuário ou senha inválido");
       }
