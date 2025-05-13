@@ -1,12 +1,12 @@
 import React from 'react';
 import GlobalStyle from "./styles/global";
-import RoutersApp from './rotas';
+import Login from './pages/login';
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <RoutersApp/>
+      <Login/>
     </>
   );
 }
