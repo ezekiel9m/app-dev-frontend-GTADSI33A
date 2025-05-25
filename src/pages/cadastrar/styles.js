@@ -11,7 +11,12 @@ export const Container = styled.div`
   background-position: center;
   background-repeat: no-repeat;
 `;
-
+export const Label = styled.label`
+  display: block;
+  margin-bottom: 5px;
+  color: #000;
+  font-weight: bold;
+`;
 export const Content = styled.div`
   background-color: #e0e0e0;
   padding: 30px;
@@ -31,27 +36,8 @@ export const H2 = styled.h2`
   flex-direction: column;
 `;
 
-export const Label = styled.label`
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 15px;
-  color: #000;
-  justify-content: center;
-  flex-direction: column;
-`;
-export const LabelError = styled.label`
-    font-size: 18px;
-    color: red;
-    background-color: #fff;   
-    padding: 10px;   
-    border-radius: 5px;
-    display: flex;   
-    align-items: center;
-    justify-content: center;
-`;
 export const ButtonGroup = styled.div`
   display: flex;
-  flex-direction: row;
-  gap: 10px;
+  justify-content: space-between;
   margin-top: 20px;
 `;
