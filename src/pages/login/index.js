@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import * as S from "./styles";
 import Button from "../../components/button";
 import Input from "../../components/input";
+import { useNavigate} from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     if (!email || !senha) {
@@ -30,6 +32,8 @@ const Login = () => {
 
       if (usuario.email === email && usuario.senha === senha) {
         alert("Login realizado com sucesso!");
+        navigate('/home/');
+
       } else {
         setErro("Usuário ou senha inválido");
       }
