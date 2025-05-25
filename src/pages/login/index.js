@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as S from "./styles";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/button";
 import Input from "../../components/input";
-import { useNavigate} from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,14 +16,6 @@ const Login = () => {
       return;
     }
     try {
-      // criar objeto de dados
-      const payload = {
-        email: "exemplo@teste.com",
-        senha: "1234",
-      };
-      // inserir dados no banco de dado do navegador
-      localStorage.setItem("usuarios", JSON.stringify(payload));
-
       // ler os dados do banco de dados
       const localStorageUsuario = localStorage.getItem("usuarios");
 
@@ -31,9 +23,7 @@ const Login = () => {
       const usuario = JSON.parse(localStorageUsuario);
 
       if (usuario.email === email && usuario.senha === senha) {
-        alert("Login realizado com sucesso!");
-        navigate('/home/');
-
+        return;
       } else {
         setErro("Usuário ou senha inválido");
       }
@@ -65,7 +55,11 @@ const Login = () => {
         {erro && <S.LabelError>{erro}</S.LabelError>}
         <S.ButtonGroup>
           <Button onClick={handleLogin} text="Entrar" color="#0d6efd"></Button>
-          <Button text="Cadastrar" color="#666"></Button>
+          <Button
+            text="Cadastrar"
+            color="#666"
+            onClick={() => navigate("/cadastrar/")}
+          ></Button>
         </S.ButtonGroup>
       </S.Content>
     </S.Container>
