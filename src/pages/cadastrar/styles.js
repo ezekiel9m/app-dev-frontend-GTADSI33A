@@ -15,6 +15,7 @@ export const Label = styled.label`
   display: block;
   margin-bottom: 5px;
   color: #000;
+  font-weight: bold;
 `;
 export const Content = styled.div`
   background-color: #e0e0e0;
@@ -40,4 +41,3 @@ export const ButtonGroup = styled.div`
   justify-content: space-between;
   margin-top: 20px;
 `;
-
