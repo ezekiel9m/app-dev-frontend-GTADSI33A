@@ -17,13 +17,25 @@ const Login = () => {
     }
     try {
       // ler os dados do banco de dados
-      const localStorageUsuario = localStorage.getItem("usuarios");
+      const localStorageUsuario = localStorage.getItem("dadosUsuarios");
+
+      // verificaao do objeto - essa linha pergunta se o objeto é vazia, caso seja quero dizer que nao existe usuário na base.
+      if (!localStorageUsuario) {
+        setErro("Nenhum usuário encontrado.");
+        return;
+      }
 
       // converter os dados para JSON
-      const usuario = JSON.parse(localStorageUsuario);
+      const usuarios = JSON.parse(localStorageUsuario);
 
-      if (usuario.email === email && usuario.senha === senha) {
-        return;
+      // Procura o usuário com email e senha correspondentes
+      const usuarioEncontrado = usuarios.find(function(usuario) {
+          return usuario.email === email && usuario.senha === senha;
+      });
+
+      if (usuarioEncontrado) {
+        alert("Login realizado com sucesso!");
+        navigate('/home/');
       } else {
         setErro("Usuário ou senha inválido");
       }
